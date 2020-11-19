@@ -38,7 +38,7 @@ type Bills struct {
 	TotalBillAmount     float64
 	TotalBillQuantity   int64
 	SkuCount            int64
-	CreditNote          int64
+	CreditNote          float64
 	CustomerID          string
 	CustomerIDRetailer  string
 	DsrId               string

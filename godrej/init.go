@@ -77,7 +77,7 @@ func buildData(dataInput utils.InputData, rows [][]string, projectID string, res
 		if len(row) > 23 {
 			newBill.UploadType = dataInput.Brand
 			newBill.CustomerBillID = row[0]
-			newBill.CreditNote = utils.GetIntFromStirng(row[22])
+			newBill.CreditNote = utils.GetFloatFromStirng(row[22])
 
 			newBill.CustomerID = dataInput.CustomerId
 			newBill.WarehouseID = dataInput.WarehouseId
@@ -87,11 +87,11 @@ func buildData(dataInput utils.InputData, rows [][]string, projectID string, res
 			dbData = append(dbData, newBill)
 			count = count + 1
 		} else {
-			if len(row) > 0 {
-				resStatus.Code = 500
-				resStatus.Message = "Less number of columns"
-				break
-			}
+			// if len(row) > 0 {
+			// 	resStatus.Code = 500
+			// 	resStatus.Message = "Less number of columns"
+			// 	break
+			// }
 		}
 	}
 

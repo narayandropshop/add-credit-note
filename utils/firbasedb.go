@@ -1,7 +1,6 @@
 package utils
 
 import (
-	"fmt"
 	"log"
 	"sync"
 
@@ -43,7 +42,6 @@ func Process(counter int, data []Bills, ctxObj context.Context, cliObj *firestor
 			return
 		}
 
-		fmt.Println(bill.CustomerBillID, bill.CreditNote, bill.BillID)
 		updateBillData(&bill)
 	}
 }

@@ -33,7 +33,7 @@ func ReadFile(dataInput utils.InputData, projectID string, resStatus *utils.Rest
 		fileObj, err = excelize.OpenReader(r)
 	} else {
 		fmt.Println("in test")
-		fileObj, err = excelize.OpenFile("/home/stingray/Downloads/Sales Value Report - Bill Wise110520201101 (1).xls")
+		fileObj, err = excelize.OpenFile("/home/stingray/Downloads/cn.xlsx")
 	}
 
 	if err != nil {
@@ -74,10 +74,10 @@ func buildData(dataInput utils.InputData, rows [][]string, projectID string, res
 	count := 0
 	for _, row := range rows[sheetStartIndex+1:] {
 		var newBill utils.Bills
-		if len(row) > 23 {
+		if len(row) > 23 && "TOTAL" != row[0] {
 			newBill.UploadType = dataInput.Brand
 			newBill.CustomerBillID = row[0]
-			newBill.CreditNote = utils.GetIntFromStirng(row[23])
+			newBill.CreditNote = utils.GetFloatFromStirng(row[23])
 
 			newBill.CustomerID = dataInput.CustomerId
 			newBill.WarehouseID = dataInput.WarehouseId
@@ -87,11 +87,11 @@ func buildData(dataInput utils.InputData, rows [][]string, projectID string, res
 			dbData = append(dbData, newBill)
 			count = count + 1
 		} else {
-			if len(row) > 0 {
-				resStatus.Code = 500
-				resStatus.Message = "Less number of columns"
-				break
-			}
+			// if len(row) > 0 {
+			// 	resStatus.Code = 500
+			// 	resStatus.Message = "Less number of columns"
+			// 	break
+			// }
 		}
 	}
 
