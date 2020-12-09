@@ -7,6 +7,7 @@ import (
 	"time"
 
 	godrej "main.go/godrej"
+	itc "main.go/itc"
 	marico "main.go/marico"
 	"main.go/utils"
 )
@@ -57,6 +58,8 @@ func UploadCreditNoteAPI(w http.ResponseWriter, r *http.Request) {
 		godrej.ReadFile(d, "", &res)
 	} else if d.CustomerId == "7MI05trvcFT8aez5C1iU" {
 		marico.ReadFile(d, "", &res)
+	} else if d.CustomerId == "ksBQR6afWnyaP7G9lv22" {
+		itc.ReadFile(d, "", &res)
 	} else {
 		res = utils.RestStatus{
 			Message: "Not supported CUSTOMER / BRAND type ",

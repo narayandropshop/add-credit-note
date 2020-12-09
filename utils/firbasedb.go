@@ -94,6 +94,7 @@ func updateBillData(bill *Bills) {
 	collectionObj := getCollectionObj("bills").Doc(bill.BillID)
 	itemInfo := map[string]interface{}{
 		"creditNote": bill.CreditNote,
+		"dndBill":    bill.DND,
 	}
 
 	_, err := collectionObj.Set(ctx, itemInfo, firestore.MergeAll)

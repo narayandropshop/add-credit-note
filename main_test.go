@@ -12,11 +12,12 @@ func TestUploadCreditNoteAPI(t *testing.T) {
 
 	// RB - WnwBuNNbGQLHNRAOStli
 	// bizom - bizom
+	// ITC - ksBQR6afWnyaP7G9lv22
 	tests := []struct {
 		body string
 		want string
 	}{
-		{body: `{"filePath":"rb/2020-08-27/Demo_bills_10_08_34.xlsx", "brand":"bzom", "table":"test2", "prod": false, "customerId":"7MI05trvcFT8aez5C1iU", "warehouseId":"rDQeYeaiFtAIFRRVnU6I", "storeType":"TT"}`, want: "null"},
+		{body: `{"filePath":"rb/2020-08-27/Demo_bills_10_08_34.xlsx", "brand":"bzom", "table":"test2", "prod": false, "customerId":"ksBQR6afWnyaP7G9lv22", "warehouseId":"rDQeYeaiFtAIFRRVnU6I", "storeType":"TT"}`, want: "null"},
 	}
 
 	for _, test := range tests {

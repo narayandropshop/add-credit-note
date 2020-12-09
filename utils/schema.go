@@ -47,6 +47,7 @@ type Bills struct {
 	UploadType          string
 	Category            string
 	Address             string
+	DND                 bool
 }
 
 type Retailers struct {
