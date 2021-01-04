@@ -9,6 +9,7 @@ import (
 	godrej "main.go/godrej"
 	itc "main.go/itc"
 	marico "main.go/marico"
+	rb "main.go/rb"
 	"main.go/utils"
 )
 
@@ -58,6 +59,8 @@ func UploadCreditNoteAPI(w http.ResponseWriter, r *http.Request) {
 		godrej.ReadFile(d, "", &res)
 	} else if d.CustomerId == "7MI05trvcFT8aez5C1iU" {
 		marico.ReadFile(d, "", &res)
+	} else if d.CustomerId == "WnwBuNNbGQLHNRAOStli" {
+		rb.ReadFile(d, "", &res)
 	} else if d.CustomerId == "ksBQR6afWnyaP7G9lv22" {
 		itc.ReadFile(d, "", &res)
 	} else {

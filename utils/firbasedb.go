@@ -69,7 +69,14 @@ func isBillExists(bill *Bills) bool {
 	// docObj.Collection("bills")
 	bill_id := ""
 	isExist := false
-	bill_query := collectionObj.Where("customerBillId", "==", bill.CustomerBillID).Documents(ctx)
+	var bill_query *firestore.DocumentIterator
+	if dataInput.StoreType != "" {
+		bill_query = collectionObj.Where("customerBillId", "==", bill.CustomerBillID).
+			Where("storeType", "==", dataInput.StoreType).
+			Documents(ctx)
+	} else {
+		bill_query = collectionObj.Where("customerBillId", "==", bill.CustomerBillID).Documents(ctx)
+	}
 
 	query, _ := bill_query.GetAll()
 
