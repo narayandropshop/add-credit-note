@@ -6,8 +6,7 @@ import (
 	"os"
 
 	"github.com/360EntSecGroup-Skylar/excelize/v2"
-	"main.go/upload"
-	"main.go/utils"
+	utils "main.go/utils"
 )
 
 var matchIndexes = []int{0, 23}
@@ -33,7 +32,7 @@ func ReadFile(dataInput utils.InputData, projectID string, resStatus *utils.Rest
 		fileObj, err = excelize.OpenReader(r)
 	} else {
 		fmt.Println("in test")
-		fileObj, err = excelize.OpenFile("/home/stingray/Downloads/cn.xlsx")
+		fileObj, err = excelize.OpenFile("/home/stingray/Downloads/7MI05trvcFT8aez5C1iU_creditnote_2020-11-06_MARICO NET SALES REPORT_.xlsx")
 	}
 
 	if err != nil {
@@ -74,7 +73,7 @@ func buildData(dataInput utils.InputData, rows [][]string, projectID string, res
 	count := 0
 	for _, row := range rows[sheetStartIndex+1:] {
 		var newBill utils.Bills
-		if len(row) > 23 && "TOTAL" != row[0] {
+		if len(row) > 23 {
 			newBill.UploadType = dataInput.Brand
 			newBill.CustomerBillID = row[0]
 			newBill.CreditNote = utils.GetFloatFromStirng(row[23])
@@ -87,11 +86,11 @@ func buildData(dataInput utils.InputData, rows [][]string, projectID string, res
 			dbData = append(dbData, newBill)
 			count = count + 1
 		} else {
-			// if len(row) > 0 {
-			// 	resStatus.Code = 500
-			// 	resStatus.Message = "Less number of columns"
-			// 	break
-			// }
+			if len(row) > 0 {
+				resStatus.Code = 500
+				resStatus.Message = "Less number of columns"
+				break
+			}
 		}
 	}
 

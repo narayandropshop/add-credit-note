@@ -11,8 +11,8 @@ import (
 	"main.go/utils"
 )
 
-var matchIndexes = []int{0, 2, 6, 7, 25, 36, 37, 40, 41, 43, 44, 46, 48, 51}
-var coloumnNames = []string{"InvoiceID", "Date", "CustomerID", "Customer", "Beat", "Item Code", "Item Name", "Volume", "Sales Price", "Invoice Qty", "Sale Tax", "Discount", "Total", "Sales Tax Value"}
+var matchIndexes = []int{0, 21, 20}
+var coloumnNames = []string{"InvoiceID", "Adjusted Amount", "Adj Ref"}
 var dbIndexs = []int{5}
 var sheetStartIndex = 0
 
@@ -34,7 +34,7 @@ func ReadFile(dataInput utils.InputData, projectID string, resStatus *utils.Rest
 		fileObj, err = excelize.OpenReader(r)
 	} else {
 		fmt.Println("in test")
-		fileObj, err = excelize.OpenFile("/home/stingray/Downloads/itcdnd.xlsx")
+		fileObj, err = excelize.OpenFile("/home/stingray/Downloads/Credit Note 08-02-2021.xlsx")
 	}
 
 	if err != nil {
@@ -79,8 +79,14 @@ func buildData(dataInput utils.InputData, rows [][]string, projectID string, res
 			if strings.Contains(row[36], "GrandTotal") && !strings.Contains(row[0], "GrandTotal") {
 				newBill.UploadType = dataInput.Brand
 				newBill.CustomerBillID = row[0]
-				newBill.CreditNote = utils.GetFloatFromStirng(row[48])
-				newBill.DND = true
+				newBill.CreditNote = utils.GetFloatFromStirng(row[22])
+
+				if strings.Contains(row[20], "GV") {
+					newBill.DND = false
+				} else {
+					newBill.DND = true
+				}
+
 				newBill.CustomerID = dataInput.CustomerId
 				newBill.WarehouseID = dataInput.WarehouseId
 				newBill.StoreType = dataInput.StoreType
