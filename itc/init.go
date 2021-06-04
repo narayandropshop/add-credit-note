@@ -34,7 +34,7 @@ func ReadFile(dataInput utils.InputData, projectID string, resStatus *utils.Rest
 		fileObj, err = excelize.OpenReader(r)
 	} else {
 		fmt.Println("in test")
-		fileObj, err = excelize.OpenFile("/home/stingray/Downloads/Credit Note 08-02-2021.xlsx")
+		fileObj, err = excelize.OpenFile("/home/stingray/Downloads/ksBQR6afWnyaP7G9lv22_creditnote_2021-02-11_Credit Note 11-02-2021_.xlsx")
 	}
 
 	if err != nil {
@@ -79,7 +79,7 @@ func buildData(dataInput utils.InputData, rows [][]string, projectID string, res
 			if strings.Contains(row[36], "GrandTotal") && !strings.Contains(row[0], "GrandTotal") {
 				newBill.UploadType = dataInput.Brand
 				newBill.CustomerBillID = row[0]
-				newBill.CreditNote = utils.GetFloatFromStirng(row[22])
+				newBill.CreditNote = utils.GetFloatFromStirng(row[21])
 
 				if strings.Contains(row[20], "GV") {
 					newBill.DND = false

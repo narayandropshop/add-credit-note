@@ -10,7 +10,7 @@ import (
 	"main.go/utils"
 )
 
-var matchIndexes = []int{0, 22}
+var matchIndexes = []int{0, 23}
 var coloumnNames = []string{"Bill Number", "Credit Adjustment"}
 var dbIndexs = []int{5}
 var sheetStartIndex = 2
@@ -33,7 +33,7 @@ func ReadFile(dataInput utils.InputData, projectID string, resStatus *utils.Rest
 		fileObj, err = excelize.OpenReader(r)
 	} else {
 		fmt.Println("in test")
-		fileObj, err = excelize.OpenFile("/home/stingray/Downloads/Sales Value Report - Bill Wise110520201101 (1).xls")
+		fileObj, err = excelize.OpenFile("/home/stingray/Downloads/copy.xlsx")
 	}
 
 	if err != nil {

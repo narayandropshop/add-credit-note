@@ -13,6 +13,7 @@ import (
 	"main.go/utils"
 )
 
+// gcloud config set project dropshop-5cbbf
 // gcloud functions deploy UploadCreditNoteAPI  --runtime go113  --trigger-http  --allow-unauthenticated --timeout 540s
 
 func UploadCreditNoteAPI(w http.ResponseWriter, r *http.Request) {

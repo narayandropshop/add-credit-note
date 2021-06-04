@@ -17,7 +17,7 @@ func TestUploadCreditNoteAPI(t *testing.T) {
 		body string
 		want string
 	}{
-		{body: `{"filePath":"rb/2020-08-27/Demo_bills_10_08_34.xlsx", "brand":"ksBQR6afWnyaP7G9lv22", "table":"demo", "prod": false, "customerId":"ksBQR6afWnyaP7G9lv22", "warehouseId":"rDQeYeaiFtAIFRRVnU6I", "storeType":"TT"}`, want: "null"},
+		{body: `{"filePath":"rb/2020-08-27/Demo_bills_10_08_34.xlsx", "brand":"jdEMMQbw29yhULLeRgJd", "table":"demo", "prod": false, "customerId":"jdEMMQbw29yhULLeRgJd", "warehouseId":"rDQeYeaiFtAIFRRVnU6I", "storeType":""}`, want: "null"},
 	}
 
 	for _, test := range tests {
